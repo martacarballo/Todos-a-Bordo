@@ -64,7 +64,7 @@ Estacionalidad climática.
 
 Distribución de precios y tipos de barcos.
 
-📎 Tecnologías utilizadas
+📎4. Tecnologías utilizadas
 
 Python
 
