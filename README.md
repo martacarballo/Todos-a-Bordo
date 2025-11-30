@@ -1,70 +1,102 @@
 ⛵ Todos a Bordo – Analítica del Mercado de Alquiler de Barcos
 
-Bienvenido a Todos a Bordo, un proyecto de data analytics y web scraping sobre el mercado náutico recreativo en España.
-Nuestro análisis se centra en tres zonas clave y muy distintas entre sí:
+Bienvenido a Todos a Bordo, un proyecto de Data Analytics sobre el mercado de alquiler de embarcaciones recreativas en España.
 
-Ibiza 🏝️ – turismo de alta gama y clima cálido
+Nuestro análisis se centra en tres zonas muy distintas entre sí:
 
-A Coruña 🌬️ – clima más fresco y condiciones marítimas cambiantes
+Ibiza 🏝️ – turismo de alta gama y clima estable
 
-Málaga ☀️ – turismo masivo y estacionalidad marcada
+A Coruña 🌬️ – clima más fresco, influencia atlántica
 
-El propósito es entender cómo influyen el clima y el turismo en los precios y el tipo de embarcaciones disponibles.
+Málaga ☀️ – turismo masivo y gran estacionalidad
+
+El objetivo es explorar cómo influyen el turismo, el clima y la presión de la demanda en la oferta y los precios del mercado náutico.
 
 🎯 Objetivo del Proyecto
 
 Analizar la disponibilidad y el precio del alquiler de barcos en función de:
 
-Ubicación (Ibiza, A Coruña y Málaga).
+Ubicación → Ibiza, A Coruña y Málaga
 
-Temporada alta de verano.
+Meses de verano (alta demanda)
 
-Condiciones climáticas mensuales.
+Condiciones climáticas
 
-Datos de presión turística.
+Magnitud del turismo (nacional e internacional)
 
-Toda la extracción de barcos se realiza desde Click&Boat, y los datos turísticos se obtienen desde Dataestur, la plataforma turística oficial en España.
+Las fuentes de datos son:
+
+Click&Boat para barcos y precios
+
+Dataestur para presión turística
+
+Datasets propios limpiados en xlsx y notebooks asociados
 
 📌 Hipótesis del análisis
 
-El proyecto busca validar estas hipótesis:
-
-1️⃣ Las zonas con mejor clima veraniego (más sol y temperaturas más estables) tienen precios de alquiler más altos.
-
-2️⃣ Las regiones con mayor presión turística en verano muestran precios de barco significativamente superiores.
-
-3️⃣ Las zonas más ventosas o frescas tienen mayor proporción de veleros; las más calurosas tienen más lanchas rápidas.
+1️⃣ Las zonas con mejor clima veraniego presentan precios más altos en alquiler de barcos.
+2️⃣ Las zonas con mayor presión turística muestran un mayor coste medio.
+3️⃣ Las zonas más ventosas/frescas tienen mayor proporción de veleros; las cálidas, más lanchas.
 
 Estas hipótesis permiten entender si el “precio del mar” está guiado por clima, demanda o perfil del turista.
 
-🧰 Contenidos del Proyecto
+🧮 Consideraciones Metodológicas Importantes
+
+Los datos turísticos proceden de Dataestur, pero en algunos casos no están disponibles por provincia específica. Por ello:
+
+✔ Illes Balears (para Ibiza)
+
+Dataestur solo publica cifras agregadas a nivel isla/comunidad.
+Para asignar Ibiza dentro de Illes Balears se aplica un coeficiente proporcional.
+
+Por defecto en este proyecto:
+
+Ibiza = 30% del total de Illes Balears
+
+Este factor se puede cambiar fácilmente en el código.
+Documentamos esta decisión para mantener transparencia metodológica.
+
+✔ Galicia (para A Coruña)
+
+Dataestur también ofrece datos agregados por comunidad autónoma.
+Se aplica un reparto basado en una proporción inicial:
+
+A Coruña = 40% del total Galicia
+
+Este factor se ajustará si se dispone de fuentes más precisas.
+
+✔ Málaga
+
+Los datos están disponibles directamente a nivel provincial, por lo que no requieren reparto.
+
+💡 El objetivo es mantener la trazabilidad del origen del dato y garantizar que las transformaciones de agregación no introducen opacidad en el análisis.
+
+🧰 Componentes del Proyecto
 🔍 1. Web Scraping
 
-Extracción de barcos por zona.
+Extracción de embarcaciones por zona
 
-Características técnicas.
+Precio, tipo, eslora, capacidad, antigüedad
 
-Precio de alquiler según fechas.
-
-Transformación y limpieza del dataset.
+Selenium + BeautifulSoup
 
 🧽 2. Data Cleaning
 
-Limpieza y estandarización de columnas.
+Limpieza y estandarización de columnas
 
-Normalización del precio.
+Conversión de precios y normalización
 
-Exportación en .xlsx para análisis.
+Exportación final en XLSX
 
 📊 3. Exploración y análisis
 
-Comparación entre las 3 zonas.
+Comparación entre zonas
 
-Estacionalidad climática.
+Estacionalidad turística y climática
 
-Distribución de precios y tipos de barcos.
+Distribución de precios por zona y categoría
 
-📎4. Tecnologías utilizadas
+📎 Tecnologías utilizadas
 
 Python
 
@@ -76,4 +108,4 @@ Jupyter Notebooks
 
 Excel
 
-GitHub
+Git + GitHub
